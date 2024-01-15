@@ -1,12 +1,37 @@
+{% extends 'home/nav.html' %}
+{% load static %}
+{% block content %}
+
+<!-- {% get_static_prefix %} -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>ECOM home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <!-- <script src="{% static 'js/home.js' %}"></script> -->
 </head>
 <body>
-    <h1>At Home</h1>
-    
+    <!-- <h1>eCom Home</h1> -->
+    <div class="banner" id="banner" data-interval="3000">
+        {% for img in images %}
+            <img data-slide-index="{{ forloop.parentloop.counter0 }}" src="{% static 'images/banner/'|add:img %}" alt="{{ img }}" height="300px">
+        {% endfor %}
+    </div>
+        
+    <!-- <img src="{% get_media_prefix %}{{ product.product_image.url }}" alt="{{ product.product_name }}"></td> -->
+    <div class="clearfix">
+        {% for item in all_item %}
+            <div class="dummy_product">
+                <img src="{% get_media_prefix %}{{ item.product_image }}" alt="{{ item.product_name }}" height="200px" width="200px">
+                <h3>{{ item.product_name }} - {{ item.product_price }}rs</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <script src="{% static 'js/home.js' %}"></script>
 </body>
 </html>
+{% endblock %}

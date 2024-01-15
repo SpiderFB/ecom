@@ -2,5 +2,7 @@ from django.urls import path
 from .import views
 
 urlpatterns = [
-   path('', views.item, name="")
+   path('', views.item, name=""),
+   path('home/', views.item, name=""),
+   path('table/', views.table, name=""),
 ]

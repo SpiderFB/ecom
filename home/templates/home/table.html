@@ -1,0 +1,43 @@
+{% extends 'home/nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+    <br>
+    <br>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Image</th>
+        </tr>
+        {% for item in all_item %}
+        <tr>    
+            <td>{{ item.product_id }}</td>
+            <td>{{ item.product_name }}</td>
+            <td>{{ item.product_description }}</td>
+            <td>{{ item.product_category }}</td>
+            <td>{{ item.product_price }}rs</td>
+            <td>{{ item.product_quantity }}</td>
+            <!-- <td><img src="{{ MEDIA_URL }}{{ item.product_image }}" alt="{{ item.product_name }}"></td> -->
+            <td><img src="{% get_media_prefix %}{{ item.product_image }}" alt="{{ item.product_name }}" height="50px" width="50px"></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+{% endblock %}
