@@ -33,9 +33,13 @@ def additem(request):
             form = AddItemForm()
         return render(request, 'home/additem.html', {'form': form})
 def itemdetails(request, pk):
-    try:
-        all_item = allitem.objects.get(product_id=pk)
-    except allitem.DoesNotExist:
-    # handle the exception here
-        return redirect('/')
-    return render(request, 'home/itemdetails.html', {'all_item': all_item})
+    # try:
+    #     one_item = allitem.objects.get(product_id=pk)
+    #     print("one item id =",one_item)
+    # except allitem.DoesNotExist:
+    # # handle the exception here
+    #     print('item not found')
+    #     return redirect('/')
+    # return render(request, 'home/itemdetails.html', {'one_item': one_item})
+    all_item = allitem.objects.get(product_id=pk)
+    return render(request, 'home/itemdetails.html', {'one_item': all_item})
