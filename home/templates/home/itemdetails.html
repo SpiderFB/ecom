@@ -1,0 +1,32 @@
+{% extends 'home/nav.html' %}
+{% load static %}
+{% block content %}
+
+<h1>item Details</h1>
+
+<h3>{{ all_item.name }}-{{ all_item.name }}rs</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Image</th>
+    </tr>
+    
+    <tr>    
+        <td>{{ item.product_id }}</td>
+        <td>{{ item.product_name }}</td>
+        <td>{{ item.product_description }}</td>
+        <td>{{ item.product_category }}</td>
+        <td>{{ item.product_price }}rs</td>
+        <td>{{ item.product_quantity }}</td>
+        <!-- <td><img src="{{ MEDIA_URL }}{{ item.product_image }}" alt="{{ item.product_name }}"></td> -->
+        <td><img src="{% get_media_prefix %}{{ item.product_image }}" alt="{{ item.product_name }}" height="50px" width="50px"></td>
+    </tr>
+</table>
+
+
+{% endblock %}

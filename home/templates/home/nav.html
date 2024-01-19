@@ -14,14 +14,20 @@
         <ul>
             <li><a href="/home/">Home</a></li>
             <li><a href="/table/">Table data</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="/additem/">Add Items</a></li>
+            {% endif %}
             <!-- For url need to define in the urls.py -->
             <ul>
-                <li><a href="/admin/">Admin({{user.username}})</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/admin/">Welcome, {{user.username}}</a></li>
+                {% else %}
+                <li><a href="/admin/">Admin Login</a></li>
+                {% endif %}
                 <li><a href="/cart/"></a>Cart</li>
                 <li><a href="/auth/"></a>Profile</li>
                 <!-- <li><a class="nav-link" href="">{{user.username}}</a></li> -->
-            </ul>
-            
+            </ul>     
         </ul>
     </div>
 </div>
