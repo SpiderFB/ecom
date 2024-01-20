@@ -7,6 +7,4 @@ urlpatterns = [
    path('table/', views.table, name=""),
    path('additem/', views.additem, name=""),
    path('itemdetails/<int:pk>/', views.itemdetails, name=""),
-   path('login/', views.user_login, name=""),
-   path('auth/', views.auth, name=""),
 ]

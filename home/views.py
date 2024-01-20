@@ -1,8 +1,7 @@
-from django.shortcuts import render, HttpResponse,redirect
+from django.shortcuts import render, HttpResponse, redirect
 from .models import allitem
 import os
 from .forms import AddItemForm
-from django.contrib.auth import authenticate, login
 
 all_item = allitem.objects.all()
 # Create your views here.
@@ -36,27 +35,6 @@ def additem(request):
 def itemdetails(request, pk):
     all_item = allitem.objects.get(product_id=pk)
     return render(request, 'home/itemdetails.html', {'one_item': all_item})
-def user_login(request):
-    return render(request,'home/login.html')
-    # return HttpResponse("okay ")
 
-def auth(request):
-
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        print(username, password)
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-
-        else:
-            # Display an error message
-            error_message = "Invalid username or password"
-            return render(request, 'home/login.html', {'error_message': error_message})
-    else:
-        # Display the login form
-        return render(request, 'home/login.html')
 
     
